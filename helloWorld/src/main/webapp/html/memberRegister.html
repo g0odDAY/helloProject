@@ -5,10 +5,17 @@
 <title>memberRegister.html</title>
 </head>
 <body>
-	<table border='1'>
+	<table border="1">
+	<tbody>
+		<caption>회원 정보 입력</caption>
+		<colgroup>
+			<col style="width:100px; background-color:#ee6;">
+			<col style="width:700px;  background-color:#ee6;">
+		</colgroup>
+		
 		<tr>
-			<td>아이디</td>
-			<td ><input type="text" name="id" width="50"></input></td>
+			<td >아이디</td>
+			<td ><input type="text" name="id"></input></td>
 			
 		</tr>
 		<tr>
@@ -21,20 +28,44 @@
 		</tr>
 		<tr>
 			<td>전화번호</td>
-			<td ><input type="number" name="phone">-<input type="number" name="phone">-<input type="number" name="phone"></input></td>
+			<td ><input type="number" name="phone" maxlength="3">-<input type="number" name="phone" maxlength="4">-<input type="number" name="phone" maxlength="4"></input></td>
 		</tr>
 		<tr>
 			<td>직업</td>
 			<td><select name="hobbies">
-				<option value=""
+				<option value="student">학생</option>
+				<option value="salaryman">회사원</option>
+				<option value="servent">공무원</option>
+				
 			</select></td>
 		</tr>
-		<tr></tr>
-		<tr></tr>
-		<tr></tr>
-		<tr></tr>
-		<tr></tr>
-		<tr></tr>
+		<tr>
+			<td>성별</td>
+			<td><input type="radio" name="gender" value="Y" checked>남자 <input type="radio" name="gender" value="N">여자</td>
+		</tr>
+		<tr>
+			<td>취미</td>
+			<td>
+			<input type="checkbox" name="hobby" value="reading" checked>독서
+			<input type="checkbox" name="hobby" value="game">게임
+			<input type="checkbox" name="hobby" value="movie">영화감상
+			<input type="checkbox" name="hobby" value="music">음악감상
+			<input type="checkbox" name="hobby" value="scoccer">축구
+			
+			</td>
+		</tr>
+		<tr>
+			<td rowspan="3">자기소개하는글</td>
+			<td rowspan="3"><textarea id="memo" cols="80" rows="6">자기소개하는 글을 쓰세요</textarea></td>		
+		</tr>
+		</tbody>
+		<tfoot>
+		
+		<tr>
+			<th colspan="3"><input type="submit" value="주문하기"><input type="reset" value="취소하기"></th>
+		</tr>
+		</tfoot>
+		
 		
 	
 	

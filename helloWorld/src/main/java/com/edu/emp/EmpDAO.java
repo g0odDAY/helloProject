@@ -22,7 +22,7 @@ public class EmpDAO extends DAO {
 				emp.setFirstName(rs.getString("first_name"));
 				emp.setLastName(rs.getString("last_name"));
 				emp.setEmail(rs.getString("email"));
-				emp.setHireDate(rs.getString("hire_date"));
+				emp.setHireDate(rs.getString("hire_date").substring(0,10));
 				emp.setJobId(rs.getString("job_id"));
 				emp.setSalary(rs.getInt("salary"));
 				list.add(emp);
@@ -63,6 +63,30 @@ public class EmpDAO extends DAO {
 		
 		return null;
 	}
+	public void insertEmployee(EmployeeVO vo) {
+		String sql="insert into emp_temp"
+				+ "(employee_id,first_name,last_name,hire_date,email,salary,job_id)"
+				+ " values(?,?,?,?,?,?,?)";
+		connect();
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, vo.getEmployeeId());
+			pstmt.setString(2, vo.getFirstName());
+			pstmt.setString(3, vo.getLastName());
+			pstmt.setString(4, vo.getHireDate());
+			pstmt.setString(5, vo.getEmail());
+			pstmt.setInt(6, vo.getSalary());
+			pstmt.setString(7, "IT_PROG");
+			int r=pstmt.executeUpdate();
+			System.out.println(r+"건 입력됨");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			disconnect();
+		}
+	}
+	
 	//한건 입력
 	public void insertEmp(EmployeeVO vo) {
 		String sql="insert into emp_temp(employee_id,first_name,last_name,email,job_id,hire_date,salary)"
@@ -122,6 +146,22 @@ public class EmpDAO extends DAO {
 			e.printStackTrace();
 		}finally {
 			disconnect();
+		}
+	}
+	
+	public boolean deleteEmployee(String empId) throws SQLException {
+		String sql="delete from emp_temp where employee_id=?";
+		connect();
+		pstmt=conn.prepareStatement(sql);
+		pstmt.setString(1, empId);
+		int r = pstmt.executeUpdate();
+		System.out.println(r+"건삭제완료");
+		
+		
+		if(r>0) {
+			return true;
+		}else {
+			return false;
 		}
 	}
 }

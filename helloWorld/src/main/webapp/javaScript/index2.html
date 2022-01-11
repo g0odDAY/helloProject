@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript/index.html</title>
+
+    <style>
+        /* #tb1>thead>tr {
+            background-color: lightskyblue;
+        }
+
+        #tb1>tbody>tr:nth-child(2n) {
+            background-color: yellow;
+        }
+
+        #tb1>tbody>tr:nth-child(2n+1) {
+            background-color: violet;
+        } */
+
+        /* /////////////////////// */
+
+        /* table, td{
+            border: 1px double red;
+            border-collapse: separate;
+        }
+
+        td{
+            padding: 5px;
+            margin: 10px auto;
+            font-size: 1.5em
+            
+        }
+
+        span {
+            display: inline-block;
+            border: 1px solid gray;
+            margin: 5px;
+            padding: 5px;
+            width: 40px;
+            text-align: center;
+        }
+
+        span:not(:empty) {
+            display: inline-block;
+            padding: 3px;
+            border: 1px solid gray;
+            margin: 5px;
+            width: 40px;
+        }
+
+        span:empty {
+            display: inline-block;
+            padding: 3px;
+            margin: 5px 6px;
+            width: 40px;
+        }
+
+        .sunday {
+            background-color: rgb(245, 122, 122);
+            color: white;
+        }
+
+        .saturday {
+            background-color: lightblue;
+            color: white;
+        } */
+
+        /*  하단 22.01.06 스타일 */
+
+
+        /* // number1 style */
+
+        /* div:not(#show) {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+
+            background-color: pink;
+            color: pink;
+
+            border: 1px solid coral;
+
+            font-size: 30px;
+            text-align: center;
+            line-height: 100px;
+
+        } */
+
+        /* ----------------------------------- */
+
+        #add {
+            border: 3px solid burlywood;
+            width: 70%;
+            float: left;
+            margin: 5px;
+            padding: 10px;
+        }
+
+        .row {
+            margin: 5px 10px;
+
+        }
+        .row>label {
+            display: inline-block;
+            width: 15%;
+        }
+
+        .row>input {
+            display: inline-block;
+            width: 80%;
+
+        }
+
+        #btn {
+            border: 3px solid none;
+            margin: 5px;
+            float: left;
+            width: 20%;
+            height: 140px;
+        }
+
+        #btn>button {
+            margin-top: 33px;
+            margin-left: 32px;
+            width: 100px;
+        }
+
+        th,
+        td {
+            padding: 5px;
+
+        }
+
+        #list {
+            border: 3px solid goldenrod;
+            float: left;
+            width: 93%;
+            height: 300px;
+            margin-left: 5px;
+        }
+
+        #list {
+            float: left;
+            border: 1px solid goldenrod;
+            width: 93%;
+            height: 300px;
+            margin-left: 5px;
+        }
+        #list table {
+            width: 95%;
+            margin: 10px auto;
+            color :midnightblue
+        }
+
+        th, td{
+            padding: 3px 5px;
+            text-align: center;
+        }
+
+        /* ----------------------------------- */
+        
+    </style>
+</head>
+
+<body id="bdy">
+
+    <div id="show">
+        <div id="add">
+            <div class="row">
+                <label for="">이름</label>
+                <input type="text" name="name">
+            </div>
+            <div class="row">
+                <label for="">연락처</label>
+                <input type="text" name="phone">
+            </div>
+            <div class="row">
+                <label for="">주소</label>
+                <input type="text" name="addr">
+            </div>
+            <div class="row">
+                <label for="">이메일</label>
+                <input type="text" name="email">
+            </div>
+
+        </div>
+        <div id="btn">
+            <button>등 록</button>
+            <button>삭제</button>
+        </div>
+        <!-- <div id="btn">
+            
+        </div> -->
+        <div id="list"></div>
+
+    </div>
+
+    <!-- <input type="text" value="text">
+<button>조회삭제</button>
+<button>추가</button>
+<p>helo</p>
+<ul id="nameList">
+    <li>강백호</li>
+    <li>서태웅</li>
+    <li>채치수</li>
+    <li>정대만</li>
+    <li>송태섭</li>
+</ul>  -->
+    <script src="dom100.js"></script>
+
+
+</body>
+
+</html>
