@@ -32,7 +32,7 @@ function makeHead() {
     let th = document.createElement('th');
     let checkbox = document.createElement('input');
     checkbox.setAttribute('type', 'checkbox');
-    checkbox.addEventListener('change', allCheckFnc());
+    checkbox.addEventListener('change', allCheckFnc);
     th.appendChild(checkbox);
     tr.appendChild(th);
     //필드영역
