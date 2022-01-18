@@ -19,7 +19,7 @@ public class memberListAllController implements Controller {
 		// TODO Auto-generated method stub
 		MemberDAO dao=new MemberDAO();
 		List<MemberVO> list=dao.getMemberList();
-		req.setAttribute("list", list);
+		req.setAttribute("memberList", list);
 		RequestDispatcher rs=req.getRequestDispatcher("memberResult/memberListOutput.jsp");
 		rs.forward(req, res);
 	}

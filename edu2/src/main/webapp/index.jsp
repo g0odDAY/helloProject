@@ -37,11 +37,7 @@
 	%>
 	<script>
 		document.getElementById('logout').addEventListener('click',logoutFnc);
-		function logoutFnc(){
-			<%
-			
-			%>
-		}
+		
 	</script>
 </body>
 </html>
