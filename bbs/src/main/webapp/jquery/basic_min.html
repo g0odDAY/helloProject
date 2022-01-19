@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery-3.6.0.min.js"></script>
+    <script>
+
+        const members=[
+            {fullName:"차현주",age:20,phone:"010-546-8894"},
+            {fullName:"황규복",age:22,phone:"010-7864-8974"},
+            {fullName:"김민수",age:50,phone:"010-546-8894"}
+        ]
+        //document.addEvenlistener('DOMContentLoaded',function(){})
+        $(document).ready(function(){
+           let tbl= $('<table id="tbl">').attr('border','1');
+            members.forEach(function(item){
+                let tr=$('<tr>').append(
+                    $('<td>').text(item.fullName),
+                    $('<td>').text(item.age),
+                    $('<td>').text(item.phone),
+                  $('<td>').html($('<button>').text('삭제').click(delFnc))
+                );
+                tr.mouseover(mouseoverFnc).mouseout(mouseoutFnc);
+                tbl.append(tr);
+                    
+            });
+            $('div').eq(2).append(tbl);
+
+            function delFnc(){
+               
+               
+                $(this).parent().parent().remove();
+            }
+          function mouseoverFnc(){
+              
+              $(this).css('background-color','green');
+          }
+          function mouseoutFnc(){
+              $(this).css('background-color','');
+          }
+        });
+    </script>
+</head>
+<body>
+    <div id="show">1</div>
+    <div id="show">2</div>
+    <div id="show">3</div>
+    <div id="show">4</div>
+</body>
+</html>

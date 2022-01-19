@@ -3,7 +3,7 @@
 <h3>글등록</h3>
 <form action="${pageContext.request.contextPath}/bulletinAdd.do"
 	method="post">
-	<table border="1">
+	<table class="table">
 		<thead>
 			<tr>
 				<th>제목</th>
@@ -15,7 +15,7 @@
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td><textarea name="content" cols="20" rows="4"></textarea></td>
+				<td><textarea name="content" cols="40" rows="4"></textarea></td>
 			</tr>
 			<tr>
 				<th>이미지</th>
@@ -29,8 +29,7 @@
 			</tr>
 			
 		</thead>
-		<tbody>
-		</tbody>
+	
 
 	</table>
 </form>

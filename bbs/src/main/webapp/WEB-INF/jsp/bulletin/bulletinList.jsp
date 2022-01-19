@@ -13,11 +13,12 @@ function formSubmit(id){
 	<input type="hidden" name="id">
 
 </form>
-<table border="1">
+<table class="table">
 	<thead>
 		<tr>
 			<th>글번호</th>
 			<th>글제목</th>
+			<th>글내용</th>
 			<th>작성자</th>
 			<th>작성일시</th>
 			<th>조회수</th>
@@ -28,6 +29,7 @@ function formSubmit(id){
 			<tr onclick="formSubmit(${bulletin.bbsId })">
 				<td>${bulletin.bbsId }</td>
 				<td>${bulletin.bbsTitle }</td>
+				<td>${bulletin.bbsContent }</td>
 				<td>${bulletin.bbsWriter }</td>
 				<td>${bulletin.bbsCreateDate }</td>
 				<td>${bulletin.bbsHit }</td>
