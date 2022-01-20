@@ -7,6 +7,7 @@ import java.util.List;
 import com.edu.common.DAO;
 import com.edu.service.BulletinService;
 import com.edu.vo.BulletinVO;
+import com.edu.vo.ReplyVO;
 
 
 public class BulletinDAO extends DAO implements BulletinService{
@@ -159,6 +160,91 @@ public class BulletinDAO extends DAO implements BulletinService{
 			disconnect();
 		}
 		return bbsId;
+	}
+
+	@Override
+	public List<ReplyVO> selectReplyList(int bbsId) {
+		connect();
+		String sql="select * from reply where bbs_id=?";
+		List<ReplyVO> rList=new ArrayList<>();
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, bbsId);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				ReplyVO vo=new ReplyVO();
+				vo.setBbsId(rs.getInt("bbs_id"));
+				vo.setReplyContent(rs.getString("reply_content"));
+				vo.setReplyDate(rs.getString("reply_date"));
+				vo.setReplyId(rs.getInt("reply_id"));
+				vo.setReplyWriter(rs.getString("reply_writer"));
+				rList.add(vo);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			disconnect();
+		}
+		return rList;
+	}
+
+	@Override
+	public ReplyVO insertReply(ReplyVO vo) {
+		String sql1="select reply_id_seq.nextval, sysdate from dual";
+		String sql2="insert into reply (reply_id,reply_content,reply_writer,reply_date,bbs_id)"
+				+ "values(?,?,?,to_date(?,'yyyy-mm-dd hh24:mi:ss'),?)";
+		connect();
+		try {
+			pstmt=conn.prepareStatement(sql1);
+			rs=pstmt.executeQuery();
+			int replySeq=0;
+			String replyDate="";
+			if(rs.next()) {
+				replySeq = rs.getInt(1);
+				replyDate=rs.getString(2);
+			}
+			pstmt=conn.prepareStatement(sql2);
+			pstmt.setInt(1, replySeq);
+			pstmt.setString(2, vo.getReplyContent());
+			pstmt.setString(3, vo.getReplyWriter());
+			pstmt.setString(4, replyDate);
+			pstmt.setInt(5, vo.getBbsId());
+			
+			int r=pstmt.executeUpdate();
+			System.out.println(r+"건입력.");
+			vo.setReplyId(replySeq);
+			vo.setReplyDate(replyDate);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			disconnect();
+		}
+		return null;
+	}
+
+	@Override
+	public boolean deleteReply(int rid) {
+		// TODO Auto-generated method stub
+		String sql="delete from reply where reply_id=?";
+		connect();
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, rid);
+			int r=pstmt.executeUpdate();
+			System.out.println(r+"건 댓글삭제!");
+			if(r>0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			disconnect();
+		}
+		
+		return false;
 	}
 	
 }

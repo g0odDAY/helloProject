@@ -24,21 +24,50 @@
                 
                 let table = $('<table border="1">');
                 let thead=$('<thead>');
+
+
                 let tbody =makeBody(result);
                 table.append(tbody);
                 $('#show').append(table);
             }
             function makeTr(obj){
                 let tr=$('<tr>').attr('id',obj.id);
-                    fields.forEach(function (field){
-                        let td=$('<td>').text(obj[field]);
-
-                        tr.append(td);
+                    $(tr).click(function(){
+                        //한건 클릭->각요소찾아와서 값을 대입
+                        console.log(this);
+                       let id= $(this).children().eq(0).text();
+                       $('#id').val(id);
+                       $('#first_name').val($(this).children().eq(1).text());
+                       $('#last_name').val($(this).children().eq(2).text());
+                       $('#email').val($(this).children().eq(3).text());
+                       $('#gender').val($(this).children().eq(4).text());
+                       $('#ip_address').val($(this).children().eq(5).text());
                     });
+               /* let chkbox=$('<button>');
+               
+                chkbox.attr('id','delete');
+                chkbox.text('삭제');
+                let tdbox=$('<td>');
+                    tdbox.append(chkbox);*/
+                    fields.forEach(function (field){
+                     let td=$('<td>').text(obj[field]);
+                          
+                        tr.append(td);
+                        //tr.append(tdbox);
+                    });
+                  //버튼추가
+                 let btn = $('<button>').text('삭제');
+                    btn.click(function(){
+                        console.log(this);
+                        $(this).parent().parent().remove();
+                    })
+               let td= $('<td>').html(btn);//<td><button>삭제</button></td>
+                tr.append(td);
                     return tr;
             }
             function makeBody(dataArry){
                 let tbody=$('<tbody>');
+                  
                 dataArry.forEach(function (item){
                    tbody.append(makeTr(item));
                 });
@@ -67,6 +96,19 @@
                 let tr=makeTr(obj);
                 $('#show>table>tbody').append(tr);
             });
+
+            //변경
+           $('#modify').on('click',function(){
+               let fn= $('#first_name').val();
+               let ln=$('#last_name').val();
+               let email=$('#email').val();
+               let gender=$('#gender').val();
+                let findId=$('#id').val();//리스트중에서 찾을 아이디
+                $(`#${findId}`).children().eq(1).text(fn);
+                $(`#${findId}`).children().eq(2).text(ln);
+                $(`#${findId}`).children().eq(3).text(email);
+                $(`#${findId}`).children().eq(4).text(gender);
+           });
         });
 
     </script>
@@ -81,7 +123,9 @@
         성별:<input type="text" id="gender"><br>
         IP:<input type="text" id="ip_address"><br>
         <button id="register">등록</button>
+        <button id="modify">변경</button>
     </div>
     <div id="show"></div>
+    <button id="delete">delete</button>
 </body>
 </html>

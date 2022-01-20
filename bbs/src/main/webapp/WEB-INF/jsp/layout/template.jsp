@@ -10,20 +10,7 @@
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="css/styles.css" rel="stylesheet" />
-<style>
-.menu ul {
-	list-style-type: none;
-}
-
-.menu li {
-	display: inline-block;
-	width: 150px;
-	margin: 10px;
-	background-color: yellow;
-	border: solid 1px;
-	text-align: center;
-}
-</style>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
  <div class="d-flex" id="wrapper">
